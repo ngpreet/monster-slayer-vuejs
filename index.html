@@ -46,7 +46,20 @@
       </section>
       <section id="log" class="container">
         <h2>Battle Log</h2>
-        <ul></ul>
+        <ul>
+          <li v-for="log in logMessages">
+            <span
+              class="text-capitalize"
+              :class="{'log--player': log.attackBy === 'player', 'log--monster': log.attackBy === 'monster'}"
+              >{{ log.attackBy }}</span
+            >
+            <span v-if="log.attackType === 'heal'" class="log--heal">
+              heals for
+            </span>
+            <span v-else class="log--damage"> attacks for </span>
+            <span>{{ log.actionValue }}</span>
+          </li>
+        </ul>
       </section>
     </div>
   </body>
